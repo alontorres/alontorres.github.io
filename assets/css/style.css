@@ -1,0 +1,128 @@
+/* Global Styles */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Wrapper/Container */
+body { /* Applying directly to body as per suggestion, can be a .container class too */
+    margin: 0 auto;
+    max-width: 960px;
+    padding: 20px;
+}
+
+/* Header */
+header {
+    text-align: center;
+    padding: 20px 0;
+}
+
+header h1 {
+    font-size: 2.5em; /* Larger font size for name */
+    margin-bottom: 0.2em;
+}
+
+header p {
+    font-size: 1em;
+    font-style: italic;
+    color: #555; /* Slightly lighter than main text */
+}
+
+/* Navigation */
+nav {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Main Content */
+/* Styles applied via body for centering and padding */
+
+/* Sections */
+section {
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+/* Headings within sections */
+section h2 {
+    color: #333;
+    margin-top: 0;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9em;
+    color: #666;
+}
+
+/* Blog Post Styling */
+#blog article {
+    margin-bottom: 30px; /* Space between blog posts */
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee; /* Separator line */
+}
+
+#blog article:last-child {
+    border-bottom: none; /* No line after the last post */
+    margin-bottom: 0;
+}
+
+#blog h3 { /* Blog post titles */
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.post-date {
+    font-size: 0.85em;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+/* Styling for lists within blog posts */
+#blog article ol,
+#blog article ul {
+    margin-left: 20px; /* Indent the list */
+    padding-left: 20px; /* Add padding for list markers */
+}
+
+#blog article ol li,
+#blog article ul li {
+    margin-bottom: 10px; /* Space out list items */
+    line-height: 1.5;    /* Adjust line height for readability */
+}
