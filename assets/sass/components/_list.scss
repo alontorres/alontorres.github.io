@@ -54,3 +54,11 @@
 			margin-left: _size(element-margin);
 		}
 	}
+
+// Styling for post metadata, like dates
+.post-date {
+	display: block; // Ensures it can take top/bottom margins properly
+	font-size: 0.9em;
+	color: #666; // Medium gray for good contrast on light backgrounds
+	margin-bottom: 0.5em; // Space below the date
+}

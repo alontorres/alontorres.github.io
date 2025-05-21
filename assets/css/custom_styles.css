@@ -1,0 +1,118 @@
+/* Custom Styles - To override or supplement main.css */
+
+/* Typography & Links */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-weight: 300;
+    line-height: 1.65;
+    /* Assuming #333 is the default text color from the original theme */
+}
+
+a {
+    /* Assuming #007bff is the default link color from the theme */
+    text-decoration: none;
+}
+
+a:hover {
+    /* Assuming #0056b3 is the hover link color from the theme */
+    text-decoration: underline;
+}
+
+a:focus {
+    outline: 2px solid #007bff; /* Or use theme's primary color */
+    outline-offset: 2px;
+    text-decoration: underline;
+}
+
+strong, b {
+    font-weight: 600;
+}
+
+em, i {
+    font-style: italic;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.3;
+    margin-top: 1.5em;
+    margin-bottom: 0.75em;
+    /* Assuming #333 for heading color from the theme */
+}
+
+h1 { font-size: 2.5em; }
+h2 { font-size: 2em; margin-top: 2em; margin-bottom: 1em; } /* Main section titles */
+h3 { font-size: 1.5em; margin-top: 1.75em; margin-bottom: 0.75em; } /* Sub-section or article titles */
+h4 { font-size: 1.2em; }
+h5 { font-size: 1em; }
+h6 { font-size: 0.9em; }
+
+/* Paragraphs and Lists */
+p { margin-bottom: 1.25em; }
+ul, ol { margin-bottom: 1.25em; padding-left: 1.5em; }
+li { margin-bottom: 0.5em; }
+
+/* Header (Name and Tagline) */
+body > header h1 { /* More specific selector for the main site title */
+    font-size: 3em; /* Example, adjust for prominence */
+    margin-bottom: 0.25em;
+}
+
+body > header p { /* More specific selector for the tagline */
+    font-weight: normal;
+    color: #555; /* Muted color */
+    margin-top: 0.5em;
+    font-size: 1.1em; /* Example size */
+    margin-bottom: 1.5em; /* Space before navigation */
+}
+
+/* Navigation Menu */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2em 0; /* Added bottom margin */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+}
+
+nav li a {
+    padding: 0.5em 1em;
+    /* text-decoration: none; - already set for general 'a' */
+    /* color: #007bff; - already set for general 'a' */
+    display: block; /* Better for padding and touch targets */
+}
+
+nav li a.active {
+    text-decoration: underline;
+    font-weight: bold;
+    /* color: #0056b3; - or a distinct active color */
+}
+
+/* Main Content Container */
+main {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Metadata Styling (e.g., .post-date) */
+.post-date {
+    font-size: 0.9em; /* 14px if base is 16px */
+    color: #666; /* Sufficient contrast */
+    margin-bottom: 1em; /* Space after date */
+}
+
+/* Footer */
+body > footer { /* More specific selector for the main site footer */
+    border-top: 1px solid #ddd;
+    margin-top: 3em; /* Increased top margin */
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+    text-align: center;
+    font-size: 0.9em;
+    color: #555;
+}

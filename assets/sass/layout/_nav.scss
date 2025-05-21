@@ -1,0 +1,36 @@
+// Navigation Menu Styles
+nav {
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center; // Center navigation items
+        background-color: #f8f9fa; // Light background for the nav bar
+        padding: 0.5em 0; // Padding around the nav bar
+        border-bottom: 1px solid #e7e7e7; // Subtle border
+    }
+
+    li {
+        margin: 0 0.5em; // Spacing between nav items
+    }
+
+    a {
+        padding: 0.5em 1em;
+        color: #333; // Dark gray for links
+        text-decoration: none;
+        font-weight: 500; // Slightly bolder than normal text
+
+        &:hover,
+        &:focus {
+            color: #007bff; // Blue for hover/focus
+            text-decoration: underline;
+        }
+
+        &.active {
+            color: #0056b3; // Darker blue for active
+            font-weight: bold;
+            text-decoration: underline;
+        }
+    }
+}
