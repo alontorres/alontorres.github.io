@@ -1,0 +1,93 @@
+/* Custom Typography Styles - To override or supplement _typography.scss */
+
+/* Basic Typography */
+
+html {
+	font-size: 16px; // Base font size
+}
+
+body {
+	// background-color: #fff; // Base body styles should be in _page.scss or original _typography.scss
+	// color: #333; // Base body styles should be in _page.scss or original _typography.scss
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol !important"; // Added !important as a test
+	font-weight: 300;
+	line-height: 1.65;
+}
+
+a {
+	// color: #007bff; // Base link color, might be in original _typography.scss or theme variables
+	text-decoration: none;
+	// transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, background-color 0.2s ease-in-out; // Transitions might be in original
+}
+
+a:hover {
+	// color: #0056b3; // Hover color might be in original
+	text-decoration: underline;
+}
+
+a:focus {
+	outline: 2px solid #007bff; // Accessibility focus outline
+	outline-offset: 2px;
+	text-decoration: underline; // Ensure underline on focus as well
+}
+
+strong, b {
+	font-weight: 600;
+}
+
+em, i {
+	font-style: italic;
+}
+
+/* Headings */
+
+h1, h2, h3, h4, h5, h6 {
+	// color: #333; // Base heading color
+	font-weight: 600;
+	line-height: 1.3;
+	margin-top: 1.5em;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 2.5em;
+}
+
+h2 { /* Main section titles */
+	font-size: 2em;
+	margin-top: 2em;
+	margin-bottom: 1em;
+}
+
+h3 { /* Sub-section or article titles */
+	font-size: 1.5em;
+	margin-top: 1.75em;
+	margin-bottom: 0.75em;
+}
+
+h4 {
+	font-size: 1.2em;
+}
+
+h5 {
+	font-size: 1em;
+}
+
+h6 {
+	font-size: 0.9em;
+}
+
+/* Paragraphs and Lists */
+
+p {
+	margin-bottom: 1.25em;
+}
+
+ul, ol {
+	margin-bottom: 1.25em;
+	padding-left: 1.5em;
+}
+
+li {
+	margin-bottom: 0.5em;
+}
