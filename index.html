@@ -3,39 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alon Torres - Feeling the AGI</title>
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/custom_styles.css">
+    <title>Alon Torres</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header id="header">
+    <header>
         <h1>Alon Torres</h1>
-        <p>Navigating the AI wave, one existential crisis at a time.</p>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="posts.html">Published Posts</a>
+        </nav>
     </header>
-    <nav>
-        <ul>
-            <li><a href="index.html" class="active">About</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="ai-resources.html">AI Resources</a></li>
-        </ul>
-    </nav>
     <main>
-        <section id="about">
-            <h2>About Me</h2>
-            <p>Hi, I'm Alon Torres. I've been an SRE at Google for the past 8 years, living in Seattle, WA. I've recently started 'feeling the AGI'...</p>
-            <p>This sense of an uncertain, rapidly accelerating future isn't meant to be paralyzing. Instead, I believe it's a call for greater collective awareness and discussion. This website is my small contribution to that effort – a place to share my evolving thoughts, process the 'existential crises' (big and small), and hopefully encourage others to explore these critical questions too. We need more open, honest dialogue about what this technology means for all of us.</p>
-            <!-- Optional for Alon to add later: -->
-            <!-- 
-            <h3>What "Feeling the AGI" Means to Me</h3>
-            <p>[Alon's brief personal elaboration here...]</p>
-            
-            <h3>SRE Experience and AI Perspective</h3>
-            <p>[Alon's brief connection of SRE experience to his AI perspective here...]</p>
-            -->
+        <section id="who-i-am">
+            <h2>Who I Am</h2>
+            <p>I'm Alon Torres, a Site Reliability Engineer with 12 years of experience in the tech industry, the last 8 of which have been at Google.</p>
+            <p class="disclaimer">All opinions expressed on this site are my own and do not represent the views or opinions of my employer.</p>
+        </section>
+        <section id="purpose">
+            <h2>Purpose of This Site</h2>
+            <p>This site contains my opinions and interesting tidbits primarily focused on Artificial Intelligence. I'll be exploring its potential impact on the world in the coming years, discussing how we might navigate these profound changes.</p>
         </section>
     </main>
     <footer>
-        <p>&copy; 2024 Alon Torres. All rights reserved.</p>
+        <p>&copy; <span id="current-year"></span> Alon Torres. All rights reserved.</p>
     </footer>
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
