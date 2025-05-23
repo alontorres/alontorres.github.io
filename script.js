@@ -26,14 +26,32 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         posts.forEach(post => {
-            const postElement = document.createElement('article');
-            postElement.classList.add('post-summary');
-            postElement.innerHTML = `
-                <h3><a href="#${post.filename}">${post.title}</a></h3>
-                <p class="post-meta">Date: ${post.date}</p>
-                <p>${post.description}</p>
-            `;
-            postListContainer.appendChild(postElement);
+            const linkElement = document.createElement('a');
+            linkElement.classList.add('post-summary-link');
+            linkElement.href = `#${post.filename}`;
+            
+            // Create inner content
+            const titleElement = document.createElement('h3');
+            // The h3 itself should not be a link, as the whole card is a link.
+            // However, to maintain the visual styling of the title as a prominent link,
+            // we might need to style the h3 directly or a span inside it if preferred.
+            // For now, let's keep the inner <a> for the title as per the CSS plan,
+            // but this is something to potentially simplify later if desired.
+            titleElement.innerHTML = `<a href="#${post.filename}">${post.title}</a>`;
+            
+            const metaElement = document.createElement('p');
+            metaElement.classList.add('post-meta');
+            metaElement.textContent = `Date: ${post.date}`;
+            
+            const descriptionElement = document.createElement('p');
+            descriptionElement.textContent = post.description;
+            
+            // Append inner content to the link element
+            linkElement.appendChild(titleElement);
+            linkElement.appendChild(metaElement);
+            linkElement.appendChild(descriptionElement);
+            
+            postListContainer.appendChild(linkElement);
         });
     }
 
@@ -65,6 +83,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             postContentContainer.innerHTML = marked.parse(markdownContent);
             document.title = `${post.title} - Alon Torres`; // Update page title
+
+            // Add "End of Post" cue
+            const endCue = document.createElement('div');
+            endCue.className = 'post-end-cue';
+            endCue.textContent = '***';
+            postContentContainer.appendChild(endCue);
 
         } catch (error) {
             console.error('Error fetching or parsing post:', error);

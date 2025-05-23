@@ -30,6 +30,8 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -49,14 +51,14 @@ h6 { font-size: 1rem; }
 /* Header */
 header {
     background-color: var(--header-bg-color); /* White background for header */
-    padding: 2rem 0;
+    padding: 1.5rem 0;
     border-bottom: 1px solid var(--border-color); /* Subtle border */
     text-align: center;
 }
 
 header h1 {
     font-size: 2.5rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
     color: var(--primary-text-color); /* Dark blue-gray for title */
 }
 header h1 a {
@@ -64,13 +66,30 @@ header h1 a {
     color: inherit;
 }
 
+/* Homepage specific header styling */
+.home-page header h1 {
+    font-size: 2.8rem; /* Slightly larger than default 2.5rem */
+    letter-spacing: 0.5px; /* Subtle letter spacing for emphasis */
+}
+
+/* Posts page specific header styling (tagline) */
+.posts-page header h1 {
+    font-size: 1.5rem; /* Smaller than default H1, acts more like a tagline */
+    font-weight: 400;   /* Lighter weight */
+    margin-bottom: 0; /* Remove bottom margin if nav is close */
+}
+.posts-page header h1 a {
+    color: var(--secondary-text-color); /* Less prominent color */
+}
+.posts-page header h1 a:hover, .posts-page header h1 a:focus {
+    color: var(--primary-text-color); /* Darken on hover */
+}
+
 header nav {
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 header nav a {
-    text-decoration: none;
-    color: var(--accent-color); /* Blue for nav links */
     margin: 0 20px;
     font-size: 1.1rem;
     font-weight: 700;
@@ -78,37 +97,43 @@ header nav a {
 
 header nav a:hover, header nav a:focus {
     color: color-mix(in srgb, var(--accent-color) 80%, black); /* Darker blue on hover/focus */
-    transition: color 0.2s ease-in-out;
+    transition: color 0.2s ease-in-out; /* This specifically targets color for hover/focus */
 }
 
 /* Main Content */
 main {
     flex-grow: 1; /* Ensures main content takes available space, pushing footer down */
-    padding: 30px 0;
+    padding: 2rem 0;
     width: 90%;
     max-width: 800px; /* Max width for readability */
-    margin: 30px auto; /* Centering and spacing */
+    margin: 2rem auto; /* Centering and spacing */
 }
 
 main section {
     background-color: var(--section-bg-color); /* White background for content sections */
-    padding: 35px;
-    margin-bottom: 35px;
+    padding: 2rem;
+    margin-bottom: 2rem;
     border-radius: 8px; /* Rounded corners */
     box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* Subtle shadow */
 }
 
 main h2 {
     color: var(--accent-color); /* Changed from primary-text-color */
-    margin-bottom: 15px; /* Remains the same */
+    margin-bottom: 1rem; /* Closer to its content */
     /* border-bottom: 2px solid var(--accent-color); Removed */
     /* padding-bottom: 8px; Removed */
     border-top: 1px solid var(--border-color); /* Added */
-    padding-top: 1em; /* Added */
+    padding-top: 1.5rem; /* Space from top border. Will inherit margin-top from general h rule */
 }
 
 p {
-    margin-bottom: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+/* Specific line height for homepage sections */
+#who-i-am p,
+#purpose p {
+    line-height: 1.7;
 }
 
 .disclaimer {
@@ -121,49 +146,68 @@ p {
 }
 
 /* Posts Page Specifics */
-.post-summary {
-    margin-bottom: 30px;
-    padding-bottom: 20px;
-    border-bottom: 1px dashed var(--border-color); /* Dashed separator for posts */
+/* Styles for the new clickable post summary link container */
+.post-summary-link {
+    display: block;
+    text-decoration: none;
+    color: inherit; /* Inherit text color from parent */
+    margin-bottom: 2rem; /* Existing margin from .post-summary */
+    padding-bottom: 1.5rem; /* Existing padding from .post-summary */
+    border-bottom: 1px solid var(--border-color); /* Changed from dashed to solid */
+    transition: background-color 0.2s ease-in-out; /* Subtle hover effect */
 }
 
-.post-summary:last-child {
+.post-summary-link:last-child {
     border-bottom: none;
     margin-bottom: 0;
 }
 
-.post-summary h3 {
-    margin-bottom: 5px;
+.post-summary-link:hover, .post-summary-link:focus {
+    background-color: #f8f9fa; /* Very light background on hover */
+    text-decoration: none; /* Ensure no underline from browser default on hover */
 }
 
-.post-summary h3 a {
-    text-decoration: none;
-    color: var(--accent-color); /* Blue for post titles */
-    font-size: 1.4rem;
+/* h3 within the link container */
+.post-summary-link h3 {
+    margin-bottom: 0.25rem; /* Existing margin */
 }
 
-.post-summary h3 a:hover, .post-summary h3 a:focus {
+/* Title link style within the clickable card */
+.post-summary-link h3 a {
+    text-decoration: none; 
+    color: var(--accent-color);
+    font-size: 1.4rem; /* Existing font size */
+}
+.post-summary-link h3 a:hover, .post-summary-link h3 a:focus {
     text-decoration: underline;
-    color: color-mix(in srgb, var(--accent-color) 80%, black); /* Darker blue on hover/focus */
+    color: color-mix(in srgb, var(--accent-color) 80%, black);
 }
+
+/* Ensure paragraphs within the link don't change color unexpectedly */
+.post-summary-link p {
+    color: var(--primary-text-color); /* Or var(--secondary-text-color) if more appropriate for excerpt */
+}
+/* Specifically for post-meta if it needs to be different */
+.post-summary-link .post-meta {
+    color: var(--secondary-text-color); /* Ensure post-meta keeps its muted color */
+    font-size: 0.875rem; /* Ensure post-meta keeps its font-size */
+    margin-bottom: 0.5rem; /* Ensure post-meta keeps its margin */
+}
+
 
 .post-meta, .caption-text {
-    font-size: 0.875rem;
-    color: var(--secondary-text-color); /* Muted color for post metadata */
-    margin-bottom: 10px;
+    font-size: 0.875rem; /* This rule is now more general or can be combined */
+    color: var(--secondary-text-color); 
+    margin-bottom: 0.5rem;
 }
 
 /* Single Post View */
 #single-post-section #back-to-list {
     display: inline-block;
-    margin-bottom: 25px;
-    text-decoration: none;
-    color: var(--accent-color); /* Blue for back link */
+    margin-bottom: 2rem;
     font-weight: bold;
-    transition: color 0.2s ease-in-out;
 }
 #single-post-section #back-to-list:hover, #single-post-section #back-to-list:focus {
-    text-decoration: none;
     color: color-mix(in srgb, var(--accent-color) 80%, black);
 }
 
@@ -176,8 +220,8 @@ p {
 
 #post-content h1, #post-content h2, #post-content h3, #post-content h4, #post-content h5, #post-content h6 {
     color: var(--primary-text-color);
-    margin-top: 2em;
-    margin-bottom: 1em;
+    margin-top: 1.5em;
+    margin-bottom: 0.75em;
 }
 #post-content h1 { font-size: 3rem; } /* Updated from 2em */
 #post-content h2 { font-size: 2.25rem; } /* Updated from 1.75em */
@@ -201,9 +245,9 @@ p {
 }
 
 #post-content blockquote {
-    border-left: 4px solid var(--border-color);
+    border-left: 4px solid var(--accent-color); /* Changed to accent color */
     padding-left: 15px;
-    margin: 1.5em 0;
+    margin: 1.5rem 0;
     color: var(--secondary-text-color);
     font-style: italic;
 }
@@ -222,7 +266,7 @@ p {
     padding: 1em;
     border-radius: 5px;
     overflow-x: auto; /* Horizontal scroll for long code lines */
-    margin-bottom: 1.5em;
+    margin-bottom: 1.5rem;
 }
 
 #post-content pre code { /* Reset for code inside pre */
@@ -238,11 +282,18 @@ p {
     margin: 1em 0;
 }
 
-#post-content a {
-    color: var(--accent-color);
+/* Global link styles */
+a {
+    color: var(--accent-color); /* Default link color */
     text-decoration: none;
+    transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+/* Link styles within post content */
+#post-content a {
+    /* color is inherited from global 'a' */
     border-bottom: 1px solid transparent;
-    transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out; /* Added color transition */
+    /* transition is inherited from global 'a' */
 }
 
 #post-content a:hover, #post-content a:focus {
@@ -251,10 +302,28 @@ p {
     color: color-mix(in srgb, var(--accent-color) 80%, black); /* Added color change on hover */
 }
 
+/* Ensure header links get the global transition if not overridden */
+header nav a {
+    /* color: var(--accent-color); Already set */
+    /* font-weight: 700; Already set */
+    /* margin: 0 20px; Already set */
+    /* font-size: 1.1rem; Already set */
+    /* text-decoration: none; Already set via global 'a' */
+    /* transition for color is inherited from global 'a', specific hover color is set */
+}
+
+.post-end-cue {
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--border-color); /* Light gray, subtle */
+    margin-top: 3rem;   /* Space above the cue */
+    margin-bottom: 1rem; /* Space below the cue, before footer (main already has margin-bottom) */
+}
+
 /* Footer */
 footer {
     text-align: center;
-    padding: 20px 0;
+    padding: 1.5rem 0;
     background-color: var(--primary-text-color); /* Dark footer */
     color: var(--header-bg-color); /* Light text for footer */
     margin-top: auto; /* Pushes footer to the bottom */
@@ -264,11 +333,38 @@ footer p {
     margin: 0;
 }
 
+.footer-links {
+    margin-top: 10px; /* Space between copyright and links */
+}
+
+.footer-links a {
+    color: var(--header-bg-color); /* Light color, same as footer text */
+    text-decoration: none; /* No underline */
+    margin: 0 10px; /* Spacing between links */
+    font-size: 0.9rem; /* Slightly smaller if desired */
+}
+
+.footer-links a:hover, .footer-links a:focus {
+    text-decoration: underline; /* Underline on hover for clarity */
+    color: color-mix(in srgb, var(--header-bg-color) 80%, var(--accent-color)); /* Slightly brighten or tint on hover */
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
-    header h1 {
+    header h1 { /* General header h1 for this breakpoint */
         font-size: 1.8rem;
     }
+    .home-page header h1 { /* Specific for home page */
+        font-size: 2.2rem; 
+    }
+    .posts-page header h1 { /* Specific for posts page tagline */
+        font-size: 1.3rem; 
+    }
+
+    #post-content h1 { font-size: 2.5rem; } 
+    #post-content h2 { font-size: 2rem; }   
+    #post-content h3 { font-size: 1.6rem; }
+
     header nav a {
         margin: 0 10px;
         font-size: 1rem;
@@ -276,7 +372,7 @@ footer p {
     main {
         width: 95%; /* More width on smaller screens */
     }
-    .post-summary h3 a {
+    .post-summary-link h3 a { /* Adjusted for new class */
         font-size: 1.3rem;
     }
 }
@@ -299,7 +395,27 @@ footer p {
     main section {
         padding: 20px;
     }
-    #post-content h1 { font-size: 1.75em; }
-    #post-content h2 { font-size: 1.5em; }
-    #post-content h3 { font-size: 1.25em; }
+    #post-content h1 { font-size: 1.75em; } /* These are fine, already relative */
+    #post-content h2 { font-size: 1.5em; }   /* These are fine, already relative */
+    #post-content h3 { font-size: 1.25em; }  /* These are fine, already relative */
+
+    .posts-page header h1 { /* Tagline for posts page on small mobile */
+        font-size: 1.1rem; 
+    }
+
+    main h2 { /* Affects "Who I Am", "Purpose", "Published Posts" */
+        font-size: 1.75rem;
+    }
+
+    .footer-links a {
+        margin: 0 5px; 
+        font-size: 0.85rem;
+    }
+    #post-content pre {
+        padding: 0.75em; 
+    }
+    .post-end-cue {
+        font-size: 1.2rem; 
+        margin-top: 2rem;
+    }
 }
