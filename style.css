@@ -110,7 +110,7 @@ main {
     padding: 2rem 0;
     width: 90%;
     max-width: 800px; /* Max width for readability */
-    margin: 3rem auto 2rem; /* Centering and spacing (top, horizontal, bottom) */
+    margin: 1.5rem auto 2rem; /* Centering and spacing (top, horizontal, bottom) */
 }
 
 main section {
@@ -123,11 +123,12 @@ main section {
 
 main h2 {
     color: var(--accent-color); /* Changed from primary-text-color */
+    margin-top: 0; /* Override general h2 margin-top */
     margin-bottom: 0.75rem; /* Closer to its content */
     /* border-bottom: 2px solid var(--accent-color); Removed */
     /* padding-bottom: 8px; Removed */
     border-top: 1px solid var(--border-color); /* Added */
-    padding-top: 1rem; /* Space from top border. Will inherit margin-top from general h rule */
+    padding-top: 0.5rem; /* Space from top border. Will inherit margin-top from general h rule */
     letter-spacing: 0.25px; /* Subtle letter spacing for definition */
 }
 
