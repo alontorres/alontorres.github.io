@@ -51,7 +51,7 @@ h6 { font-size: 1rem; }
 /* Header */
 header {
     background-color: var(--header-bg-color); /* White background for header */
-    padding: 1.5rem 0;
+    padding: 1rem 0;
     border-bottom: 1px solid var(--border-color); /* Subtle border */
     text-align: center;
 }
@@ -90,14 +90,18 @@ header nav {
 }
 
 header nav a {
-    margin: 0 20px;
+    margin: 0 15px;
     font-size: 1.1rem;
     font-weight: 700;
 }
 
-header nav a:hover, header nav a:focus {
-    color: color-mix(in srgb, var(--accent-color) 80%, black); /* Darker blue on hover/focus */
-    transition: color 0.2s ease-in-out; /* This specifically targets color for hover/focus */
+header nav a:hover {
+    color: color-mix(in srgb, var(--accent-color) 80%, black); /* Darker blue on hover */
+}
+header nav a:focus-visible {
+    color: color-mix(in srgb, var(--accent-color) 80%, black); /* Darker blue on focus */
+    outline: 2px solid var(--accent-color); /* Enhanced focus outline */
+    outline-offset: 2px;
 }
 
 /* Main Content */
@@ -106,24 +110,25 @@ main {
     padding: 2rem 0;
     width: 90%;
     max-width: 800px; /* Max width for readability */
-    margin: 2rem auto; /* Centering and spacing */
+    margin: 3rem auto 2rem; /* Centering and spacing (top, horizontal, bottom) */
 }
 
 main section {
     background-color: var(--section-bg-color); /* White background for content sections */
-    padding: 2rem;
-    margin-bottom: 2rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
     border-radius: 8px; /* Rounded corners */
     box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* Subtle shadow */
 }
 
 main h2 {
     color: var(--accent-color); /* Changed from primary-text-color */
-    margin-bottom: 1rem; /* Closer to its content */
+    margin-bottom: 0.75rem; /* Closer to its content */
     /* border-bottom: 2px solid var(--accent-color); Removed */
     /* padding-bottom: 8px; Removed */
     border-top: 1px solid var(--border-color); /* Added */
-    padding-top: 1.5rem; /* Space from top border. Will inherit margin-top from general h rule */
+    padding-top: 1rem; /* Space from top border. Will inherit margin-top from general h rule */
+    letter-spacing: 0.25px; /* Subtle letter spacing for definition */
 }
 
 p {
@@ -206,9 +211,15 @@ p {
     display: inline-block;
     margin-bottom: 2rem;
     font-weight: bold;
+    transition: color 0.2s ease-in-out, outline-offset 0.1s ease-in-out, outline 0.1s ease-in-out; /* Added specific transitions */
 }
-#single-post-section #back-to-list:hover, #single-post-section #back-to-list:focus {
+#single-post-section #back-to-list:hover {
     color: color-mix(in srgb, var(--accent-color) 80%, black);
+}
+#single-post-section #back-to-list:focus-visible {
+    color: color-mix(in srgb, var(--accent-color) 80%, black);
+    outline: 2px solid var(--accent-color); /* Enhanced focus outline */
+    outline-offset: 2px;
 }
 
 /* Markdown Rendered Content Styling */
@@ -296,20 +307,28 @@ a {
     /* transition is inherited from global 'a' */
 }
 
-#post-content a:hover, #post-content a:focus {
-    text-decoration: none;
-    border-bottom: 1px solid var(--accent-color);
-    color: color-mix(in srgb, var(--accent-color) 80%, black); /* Added color change on hover */
+#post-content a:hover {
+    text-decoration: none; /* Ensure no default underline from browser on hover */
+    border-bottom-color: var(--accent-color); /* Change border color */
+    color: color-mix(in srgb, var(--accent-color) 80%, black);
+}
+
+#post-content a:focus-visible {
+    text-decoration: none; /* Ensure no default underline from browser on focus */
+    border-bottom-color: var(--accent-color); /* Change border color */
+    color: color-mix(in srgb, var(--accent-color) 80%, black);
+    outline: 2px solid var(--accent-color); /* Optional: Add outline for very clear focus if border is subtle */
+    outline-offset: 2px;
 }
 
 /* Ensure header links get the global transition if not overridden */
 header nav a {
     /* color: var(--accent-color); Already set */
     /* font-weight: 700; Already set */
-    /* margin: 0 20px; Already set */
+    /* margin: 0 15px; Already set -- from previous turn */
     /* font-size: 1.1rem; Already set */
     /* text-decoration: none; Already set via global 'a' */
-    /* transition for color is inherited from global 'a', specific hover color is set */
+    transition: color 0.2s ease-in-out, outline-offset 0.1s ease-in-out, outline 0.1s ease-in-out; /* Added outline transitions */
 }
 
 .post-end-cue {
@@ -323,7 +342,7 @@ header nav a {
 /* Footer */
 footer {
     text-align: center;
-    padding: 1.5rem 0;
+    padding: 1rem 0;
     background-color: var(--primary-text-color); /* Dark footer */
     color: var(--header-bg-color); /* Light text for footer */
     margin-top: auto; /* Pushes footer to the bottom */
@@ -331,22 +350,6 @@ footer {
 
 footer p {
     margin: 0;
-}
-
-.footer-links {
-    margin-top: 10px; /* Space between copyright and links */
-}
-
-.footer-links a {
-    color: var(--header-bg-color); /* Light color, same as footer text */
-    text-decoration: none; /* No underline */
-    margin: 0 10px; /* Spacing between links */
-    font-size: 0.9rem; /* Slightly smaller if desired */
-}
-
-.footer-links a:hover, .footer-links a:focus {
-    text-decoration: underline; /* Underline on hover for clarity */
-    color: color-mix(in srgb, var(--header-bg-color) 80%, var(--accent-color)); /* Slightly brighten or tint on hover */
 }
 
 /* Responsive Design */
@@ -395,9 +398,9 @@ footer p {
     main section {
         padding: 20px;
     }
-    #post-content h1 { font-size: 1.75em; } /* These are fine, already relative */
-    #post-content h2 { font-size: 1.5em; }   /* These are fine, already relative */
-    #post-content h3 { font-size: 1.25em; }  /* These are fine, already relative */
+    #post-content h1 { font-size: 1.75rem; }
+    #post-content h2 { font-size: 1.5rem; }
+    #post-content h3 { font-size: 1.25rem; }
 
     .posts-page header h1 { /* Tagline for posts page on small mobile */
         font-size: 1.1rem; 
@@ -407,10 +410,6 @@ footer p {
         font-size: 1.75rem;
     }
 
-    .footer-links a {
-        margin: 0 5px; 
-        font-size: 0.85rem;
-    }
     #post-content pre {
         padding: 0.75em; 
     }
